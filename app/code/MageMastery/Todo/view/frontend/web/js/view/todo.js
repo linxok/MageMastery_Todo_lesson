@@ -8,6 +8,7 @@ define([
     return Component.extend({
         defaults: {
             newTaskLabel: '',
+            buttonSelector: '#add-new-task-button',
             tasks: [
                 {id: 1, label: "Task1", status: false},
                 {id: 2, label: "Task2", status: false},
@@ -27,7 +28,6 @@ define([
                 }
                 return task;
             });
-
             this.tasks(items);
         },
         deleteTask: function (taskId) {
@@ -36,7 +36,6 @@ define([
                 content: 'Are you sure you want to delete this?',
                 actions: {
                     confirm: function () {
-
                         let tasks = [];
                         if (self.tasks().length === 1) {
                             self.tasks(tasks);
@@ -60,5 +59,11 @@ define([
             });
             this.newTaskLabel('');
         },
+        checkKey: function (data, event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                $(this.buttonSelector).click();
+            }
+        }
     });
 });
