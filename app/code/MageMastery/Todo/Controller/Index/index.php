@@ -42,6 +42,7 @@ class Index extends Action
     {
 //        $task = $this->taskRepository->getList($this->searchCriteriaBuilder->create())->getItems();
         var_dump($this->taskRepository->getList($this->searchCriteriaBuilder->create())->getItems());
+        return ;
 
 //        $task = $this->taskFactory->create();
 //        $task->setData([
