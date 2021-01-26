@@ -45,23 +45,6 @@ class Index extends Action
 
     public function execute()
     {
-        $task = $this->taskRepository->get(1);
-        $task->setData('status' , 'complete');
-
-        $this->taskManagement->save($task);
-
-        var_dump($this->taskRepository->getList($this->searchCriteriaBuilder->create())->getItems());
-        return ;
-
-//        $task = $this->taskFactory->create();
-//        $task->setData([
-//            'Label' => 'New Task 22',
-//            'Status' => 'open',
-//            'customer_id' => 1
-//        ]);
-//
-//        $this->taskResource->save($task);
-
         return $this->resultFactory->create(ResultFactory::TYPE_PAGE);
     }
 }

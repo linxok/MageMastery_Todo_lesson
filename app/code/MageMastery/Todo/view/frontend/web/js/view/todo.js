@@ -1,30 +1,33 @@
 define([
     'uiComponent',
     'jquery',
-    'Magento_Ui/js/modal/confirm'
-], function (Component, $, modal) {
+    'Magento_Ui/js/modal/confirm',
+    'MageMastery_Todo/js/service/task'
+], function (Component, $, modal, taskService) {
     'use strict';
     console.log("Hello World");
     return Component.extend({
         defaults: {
             newTaskLabel: '',
             buttonSelector: '#add-new-task-button',
-            tasks: [
-                {id: 1, label: "Task1", status: false},
-                {id: 2, label: "Task2", status: false},
-                {id: 3, label: "Task3", status: false},
-                {id: 4, label: "Task4", status: true}
-            ]
+            tasks: [],
         },
         initObservable: function () {
             this._super().observe(['tasks', 'newTaskLabel']);
+
+            let self = this;
+            taskService.getList().then(function (tasks) {
+                self.tasks(tasks);
+                return tasks;
+            });
+
             return this;
         },
         switchStatus: function (data, event) {
             const taskId = $(event.target).data('id');
             let items = this.tasks().map(function (task) {
-                if (task.id === taskId) {
-                    task.status = !task.status;
+                if (task.task_id === taskId) {
+                    task.status = task.status === 'open' ? 'complete': 'open' ;
                 }
                 return task;
             });
@@ -42,7 +45,7 @@ define([
                             return;
                         }
                         self.tasks().forEach(function (task) {
-                            if (task.id !== taskId) {
+                            if (task.task_id !== taskId) {
                                 tasks.push(task);
                             }
                         });
