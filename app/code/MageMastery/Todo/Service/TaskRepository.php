@@ -7,7 +7,6 @@ use MageMastery\Todo\Api\Data\TaskSearchResultInterfaceFactory;
 use MageMastery\Todo\Api\TaskRepositoryInterface;
 use MageMastery\Todo\Model\ResourceModel\Task;
 use MageMastery\Todo\Model\TaskFactory;
-use Magento\Customer\Api\Data\AddressSearchResultsInterfaceFactory;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
 
@@ -26,12 +25,12 @@ class TaskRepository implements TaskRepositoryInterface
     /**
      * @var SearchResultsInterfaceFactory
      */
-    private $serchResultFactory;
+    private $searchResultFactory;
 
     /**
      * @var CollectionProcessorInterface
      */
-    private $collectionProcessor;
+    private  $collectionProcessor;
 
     /**
      * TaskRepository constructor.
@@ -45,17 +44,16 @@ class TaskRepository implements TaskRepositoryInterface
         TaskFactory $taskFactory,
         CollectionProcessorInterface $collectionProcessor,
         TaskSearchResultInterfaceFactory $searchResultFactory
-)
-    {
+    ) {
         $this->resource = $resource;
         $this->taskFactory = $taskFactory;
         $this->collectionProcessor = $collectionProcessor;
-        $this->serchResultFactory = $searchResultFactory;
+        $this->searchResultFactory = $searchResultFactory;
     }
 
     public function getList(SearchCriteriaInterface $searchCriteria): TaskSearchResultInterface
     {
-        $searchResult = $this->serchResultFactory->create();
+        $searchResult = $this->searchResultFactory->create();
         $searchResult->setSearchCriteria($searchCriteria);
 
         $this->collectionProcessor->process($searchCriteria, $searchResult);

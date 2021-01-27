@@ -19,7 +19,7 @@ class CustomerTaskList implements CustomerTaskListInterface
     /**
      * @var SearchCriteriaBuilder
      */
-    private $searchCriteriaBuildeer;
+    private $searchCriteriaBuilder;
 
     /**
      * CustomerTaskList constructor.
@@ -31,7 +31,7 @@ class CustomerTaskList implements CustomerTaskListInterface
         SearchCriteriaBuilder $searchCriteriaBuilder
     ) {
         $this->taskRepository = $taskRepository;
-        $this->searchCriteriaBuildeer = $searchCriteriaBuilder;
+        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
     }
 
     /**
@@ -39,8 +39,6 @@ class CustomerTaskList implements CustomerTaskListInterface
      */
     public function getList()
     {
-        return $this->taskRepository
-            ->getList($this->searchCriteriaBuildeer->create())
-            ->getItems();
+        return $this->taskRepository->getList($this->searchCriteriaBuilder->create())->getItems();
     }
 }

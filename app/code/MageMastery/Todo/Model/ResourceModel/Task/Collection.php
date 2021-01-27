@@ -1,14 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MageMastery\Todo\Model\ResourceModel\Task;
 
-use MageMastery\Todo\Api\Data\TaskInterface;
 use MageMastery\Todo\Api\Data\TaskSearchResultInterface;
+use MageMastery\Todo\Model\ResourceModel\Task as TaskResource;
+use MageMastery\Todo\Model\Task;
 use Magento\Framework\Api\SearchCriteriaInterface;
-use Magento\Framework\Api\SearchResultsInterface;
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use \MageMastery\Todo\Model\Task;
-use \MageMastery\Todo\Model\ResourceModel\Task as TaskResource;
 
 class Collection extends AbstractCollection implements TaskSearchResultInterface
 {
@@ -24,17 +24,17 @@ class Collection extends AbstractCollection implements TaskSearchResultInterface
     }
 
     /**
-     * @return SearchCriteriaInterface|void
+     * @return SearchCriteriaInterface
      */
     public function getSearchCriteria()
     {
         return $this->searchCriteria;
     }
-public function setSearchCriteria(SearchCriteriaInterface $searchCriteria)
-{
-    $this->searchCriteria= $searchCriteria;
-    return $this;
-}
+    public function setSearchCriteria(SearchCriteriaInterface $searchCriteria)
+    {
+        $this->searchCriteria= $searchCriteria;
+        return $this;
+    }
 
     /**
      * @return int
@@ -58,7 +58,7 @@ public function setSearchCriteria(SearchCriteriaInterface $searchCriteria)
         if (!$items) {
             return $this;
         }
-        foreach ($items as $item){
+        foreach ($items as $item) {
             $this->addItem($item);
         }
         return $this;

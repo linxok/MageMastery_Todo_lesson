@@ -5,7 +5,7 @@ define([
     'MageMastery_Todo/js/service/task'
 ], function (Component, $, modal, taskService) {
     'use strict';
-    console.log("Hello World");
+    //console.log("Hello World");
     return Component.extend({
         defaults: {
             newTaskLabel: '',

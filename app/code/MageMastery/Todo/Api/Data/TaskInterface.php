@@ -12,7 +12,7 @@ interface TaskInterface
     /**
      * @return int
      */
-    public function getTskId():int;
+    public function getTaskId():int;
 
     /**
      * @return string
