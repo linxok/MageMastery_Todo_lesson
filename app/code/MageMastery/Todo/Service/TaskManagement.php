@@ -12,7 +12,7 @@ use MageMastery\Todo\Model\ResourceModel\Task;
 class TaskManagement implements TaskManagementInterface
 {
 
-    private $resource;
+    private Task $resource;
 
     public function __construct(Task $resource)
     {

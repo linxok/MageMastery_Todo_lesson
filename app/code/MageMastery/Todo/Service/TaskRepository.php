@@ -15,22 +15,22 @@ class TaskRepository implements TaskRepositoryInterface
     /**
      * @var Task
      */
-    private $resource;
+    private Task $resource;
 
     /**
      * @var TaskFactory
      */
-    private $taskFactory;
+    private TaskFactory $taskFactory;
 
     /**
-     * @var SearchResultsInterfaceFactory
+     * @var SearchResultInterfaceFactory
      */
     private $searchResultFactory;
 
     /**
      * @var CollectionProcessorInterface
      */
-    private  $collectionProcessor;
+    private CollectionProcessorInterface $collectionProcessor;
 
     /**
      * TaskRepository constructor.

@@ -5,7 +5,6 @@ namespace MageMastery\Todo\Controller\Index;
 
 use MageMastery\Todo\Api\TaskManagementInterface;
 use MageMastery\Todo\Model\ResourceModel\Task as TaskResource;
-use MageMastery\Todo\Model\Task;
 use MageMastery\Todo\Model\TaskFactory;
 use MageMastery\Todo\Service\TaskRepository;
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -15,17 +14,17 @@ use Magento\Framework\Controller\ResultFactory;
 
 class Index extends Action
 {
-    private $taskResource;
-    private $taskFactory;
+    private TaskResource $taskResource;
+    private TaskFactory $taskFactory;
 
     /**
      * @var TaskRepository
      */
-    private $taskRepository;
+    private TaskRepository $taskRepository;
 
-    private $searchCriteriaBuilder;
+    private SearchCriteriaBuilder $searchCriteriaBuilder;
 
-    private $taskManagement;
+    private TaskManagementInterface $taskManagement;
 
     public function __construct(
         Context $context,
@@ -45,6 +44,7 @@ class Index extends Action
 
     public function execute()
     {
+
         return $this->resultFactory->create(ResultFactory::TYPE_PAGE);
     }
 }

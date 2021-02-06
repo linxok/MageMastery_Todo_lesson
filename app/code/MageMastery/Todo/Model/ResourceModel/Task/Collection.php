@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MageMastery\Todo\Model\ResourceModel\Task;
 
+use Exception;
 use MageMastery\Todo\Api\Data\TaskSearchResultInterface;
 use MageMastery\Todo\Model\ResourceModel\Task as TaskResource;
 use MageMastery\Todo\Model\Task;
@@ -16,7 +17,7 @@ class Collection extends AbstractCollection implements TaskSearchResultInterface
     /**
      * @var SearchCriteriaInterface
      */
-    private $searchCriteria;
+    private SearchCriteriaInterface $searchCriteria;
 
     protected function _construct()
     {
@@ -53,6 +54,11 @@ class Collection extends AbstractCollection implements TaskSearchResultInterface
         return $this;
     }
 
+    /**
+     * @param array|null $items
+     * @return $this
+     * @throws Exception
+     */
     public function setItems(array $items= null)
     {
         if (!$items) {

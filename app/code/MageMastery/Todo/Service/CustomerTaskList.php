@@ -14,12 +14,12 @@ class CustomerTaskList implements CustomerTaskListInterface
     /**
      * @var TaskRepositoryInterface
      */
-    private $taskRepository;
+    private TaskRepositoryInterface $taskRepository;
 
     /**
      * @var SearchCriteriaBuilder
      */
-    private $searchCriteriaBuilder;
+    private SearchCriteriaBuilder $searchCriteriaBuilder;
 
     /**
      * CustomerTaskList constructor.
