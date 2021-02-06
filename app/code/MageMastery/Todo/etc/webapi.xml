@@ -2,7 +2,8 @@
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
     <route method="GET" url="/V1/customer/todo/tasks">
-        <service class="MageMastery\Todo\Service\CustomerTaskList" method="getList"/>
+<!--        <service class="MageMastery\Todo\Service\CustomerTaskList" method="getList"/>-->
+        <service class="\MageMastery\Todo\Api\CustomerTaskListInterface" method="getList"/>
 <!--            в оригинале в классе путь к интерфейсу    -->
         <resources>
             <resource ref="anonymous"/>
@@ -10,6 +11,12 @@
     </route>
     <route method="POST" url="/V1/customer/todo/task/update">
         <service class="MageMastery\Todo\Api\TaskStatusManagementInterface" method="change"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route method="POST" url="/V1/customer/todo/task/delete">
+        <service class="MageMastery\Todo\Api\TaskManagementInterface" method="delete"/>
         <resources>
             <resource ref="anonymous"/>
         </resources>

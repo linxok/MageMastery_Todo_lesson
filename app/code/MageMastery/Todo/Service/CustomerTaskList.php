@@ -10,7 +10,6 @@ use Magento\Framework\Api\SearchCriteriaBuilder;
 
 class CustomerTaskList implements CustomerTaskListInterface
 {
-
     /**
      * @var TaskRepositoryInterface
      */

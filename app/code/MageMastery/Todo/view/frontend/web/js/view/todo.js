@@ -28,6 +28,7 @@ define([
             let items = this.tasks().map(function (task) {
                 if (task.task_id === taskId) {
                     task.status = task.status === 'open' ? 'complete': 'open' ;
+                    taskService.update(taskId, task.status);
                 }
                 return task;
             });
@@ -40,6 +41,13 @@ define([
                 actions: {
                     confirm: function () {
                         let tasks = [];
+
+                        taskService.delete(self.tasks().find(function (task) {
+                            if (task.task_id === taskId) {
+                                return task;
+                            }
+                        }));
+
                         if (self.tasks().length === 1) {
                             self.tasks(tasks);
                             return;
