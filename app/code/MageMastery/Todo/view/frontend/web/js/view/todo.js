@@ -63,12 +63,19 @@ define([
             });
         },
         addTask: function () {
-            this.tasks.push( {
-                id: Math.floor(Math.random() * 100),
+            const self = this;
+
+            let task = {
                 label: this.newTaskLabel(),
-                status: true
-            });
-            this.newTaskLabel('');
+                status: 'open',
+            };
+            taskService.create(task)
+                .then(function (taskId) {
+                   task.task_id = taskId;
+                   self.tasks.push(task);
+                   self.newTaskLabel('');
+                });
+
         },
         checkKey: function (data, event) {
             if (event.keyCode === 13) {
