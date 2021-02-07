@@ -7,32 +7,34 @@ ul.tasks li {
     display: flex;
 }
 
-ul.tasks li .label {
-    margin-top: 2px;
-    margin-left: 10px;
-    min-width: 80%;
-}
 
-ul.tasks li .status {
-    display: inline-flex;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-}
 
-ul.tasks li .status:hover {
-    border: 2px solid #82cc78;
-    background: #82cc78;
-}
+/*ul.tasks li .label {*/
+/*    margin-top: 2px;*/
+/*    margin-left: 10px;*/
+/*    min-width: 80%;*/
+/*}*/
 
-ul.tasks li .status.open {
-    border: 2px solid #ccc;
-}
+/*ul.tasks li .status {*/
+/*    display: inline-flex;*/
+/*    width: 20px;*/
+/*    height: 20px;*/
+/*    border-radius: 50%;*/
+/*}*/
 
-ul.tasks li .status.complete {
-    border: 2px solid #82cc78;
-    background: #82cc78;
-}
+/*ul.tasks li .status:hover {*/
+/*    border: 2px solid #82cc78;*/
+/*    background: #82cc78;*/
+/*}*/
+
+/*ul.tasks li .status.open {*/
+/*    border: 2px solid #ccc;*/
+/*}*/
+
+/*ul.tasks li .status.complete {*/
+/*    border: 2px solid #82cc78;*/
+/*    background: #82cc78;*/
+/*}*/
 
 .form-container {
     margin: 0 20px 20px 20px;
@@ -47,4 +49,25 @@ ul.tasks li .status.complete {
 }
 ul.tasks .delete:hover {
     cursor: pointer;
+}
+ul.tasks .status.complete {
+    text-decoration: line-through;
+    color: #ccc;
+}
+
+ul.tasks li {
+    margin: 0;
+    display: block;
+    font-size: 1.3rem;
+    color: #006400;
+    padding: 12px 20px 12px 45px;
+    position: relative;
+}
+ul.tasks a{
+    cursor: pointer;
+}
+ul.tasks a.status{
+    color: #575757;
+    display: inline-block;
+    width: 80%;
 }
